@@ -1,35 +1,33 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-
+import { Link } from 'react-router-dom'
 export default function ProductComponent() {
     const products = useSelector(state => state.productReducer.products)
 
     return (
-        <>
+        <div className='row'>
             {
-                products.map((product, index) => {
-                    const { image, price, title, category } = product
+                products.map((product) => {
+                    const { id, image, price, title, category } = product
                     return (
-                        <div className='four column wide'>
-                            <div className='ui link cards' key={index}>
-                                <div className='card'>
+                        <div className='cards col-0- 12 col-sm-6 col-md-4 col-xl-3 mb-4' key={id}>
+                            <Link to={`/product/${id}`} style={{ color: 'black' }}>
+                                <div className="card">
                                     <div className='image'>
-                                        <img src={image} alt="Not found" />
+                                        <img src={image} className="card-img-top" alt="Not found" />
                                     </div>
-                                    <div className='content'>
-                                        <div className='header'>
-                                            <div className='header'>{title}</div>
-                                            <div className='meta price'>{price}</div>
-                                            <div className='meta'>{category}</div>
-                                        </div>
+                                    <div className="card-body">
+                                        <h5 className="card-title">{title}</h5>
+                                        <p className="card-text">{price}</p>
+                                        <p className="card-text">{category}</p>
                                     </div>
                                 </div>
-                            </div>
+                            </Link>
                         </div>
                     )
 
                 })
             }
-        </>
+        </div>
     )
 }
