@@ -92,3 +92,15 @@
   color: rgb(102, 101, 101);
   padding-left: 20px;
 }
+
+.single-image{
+  /* height: 87vh; */
+  width: 100%;
+  margin: auto;
+  padding: 60px;
+}
+
+.single-image img{
+  height: 100%;
+  width: 100%;
+}
